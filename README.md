@@ -1,6 +1,6 @@
 # Graph
 
-Certifique-se de que você possui o Node na versão 16.20.2 instalado em seu sistema. Você pode baixá-lo [aqui]([https://nodejs.org/](https://nodejs.org/download/release/v16.20.2/)).
+Certifique-se de que você possui o Node na versão 16.20.2 instalado em seu sistema. Você pode baixá-lo [aqui](https://nodejs.org/).
 
 Após verificar se você possui o Node instalado, siga as etapas abaixo para configurar e executar o código:
 
