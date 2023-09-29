@@ -26,34 +26,34 @@ export class Graph {
   }
 
   dfs(g: Graph, source: number, target: number): number[] {
-    const stack: number[] = [];
-    const visited: boolean[] = new Array(g.numVertices).fill(false);
-    const parent: number[] = new Array(g.numVertices).fill(-1);
+  const stack: number[] = [];
+  const visited: boolean[] = new Array(g.numVertices).fill(false);
+  const parent: number[] = new Array(g.numVertices).fill(-1);
 
-    stack.push(source);
+  stack.push(source);
 
-    while (stack.length > 0) {
-      const vertex = stack.pop();
-      if (vertex !== undefined) {
-        if (vertex === target) {
-          // Encontrou o destino, retornar o caminho.
-          const path: number[] = [];
-          let current = vertex;
-          while (current !== source) {
-            path.unshift(current);
-            current = parent[current];
-          }
-          path.unshift(source);
-          return path;
+  while (stack.length > 0) {
+    const vertex = stack.pop();
+    if (vertex !== undefined && vertex <= this.numVertices) {
+      if (vertex === target) {
+        // Encontrou o destino, retornar o caminho.
+        const path: number[] = [];
+        let current = vertex;
+        while (current !== source) {
+          path.unshift(current);
+          current = parent[current];
         }
+        path.unshift(source);
+        return path;
+      }
 
-        if (!visited[vertex]) {
-          visited[vertex] = true;
+      if (!visited[vertex]) {
+        visited[vertex] = true;
 
-          for (const neighbor of g.list[vertex]) {
-            if (!visited[neighbor]) {
-              stack.push(neighbor);
-              parent[neighbor] = vertex;
+        for (const neighbor of g.list[vertex]) {
+          if (!visited[neighbor]) {
+            stack.push(neighbor);
+            parent[neighbor] = vertex;
           }
         }
       }
@@ -64,39 +64,39 @@ export class Graph {
   }
 
   bfs(g: Graph, source: number, target: number): number[] {
-    const dist: number[] = new Array(g.numVertices).fill(-1);
-    const ant: number[] = new Array(g.numVertices).fill(-1);
-    const isVisited: boolean[] = new Array(g.numVertices).fill(false);
-    const Q: number[] = [];
+  const dist: number[] = new Array(g.numVertices).fill(-1);
+  const ant: number[] = new Array(g.numVertices).fill(-1);
+  const isVisited: boolean[] = new Array(g.numVertices).fill(false);
+  const Q: number[] = [];
 
-    Q.push(source);
-    isVisited[source] = true;
-    dist[source] = 0;
+  Q.push(source);
+  isVisited[source] = true;
+  dist[source] = 0;
 
-    while (Q.length > 0) {
-      const p = Q.shift();
-      if (p !== undefined) {
-        for (const v of g.list[p]) {
-          if (!isVisited[v]) {
-            dist[v] = dist[p] + 1;
-            ant[v] = p;
-            Q.push(v);
-            isVisited[v] = true;
-            if (v === target) {
-              // Encontrou o destino, retornar o caminho.
-              const path: number[] = [];
-              let current = v;
-              while (current !== source) {
-                path.unshift(current);
-                current = ant[current];
-              }
-              path.unshift(source);
-              return path;
+  while (Q.length > 0) {
+    const p = Q.shift();
+    if (p !== undefined && p <= this.numVertices) {
+      for (const v of g.list[p]) {
+        if (!isVisited[v]) {
+          dist[v] = dist[p] + 1;
+          ant[v] = p;
+          Q.push(v);
+          isVisited[v] = true;
+          if (v === target) {
+            // Encontrou o destino, retornar o caminho.
+            const path: number[] = [];
+            let current = v;
+            while (current !== source) {
+              path.unshift(current);
+              current = ant[current];
             }
+            path.unshift(source);
+            return path;
           }
         }
       }
     }
+  }
   return [];
   }
 }

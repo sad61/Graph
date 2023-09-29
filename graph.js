@@ -28,7 +28,7 @@ var Graph = /** @class */ (function () {
         stack.push(source);
         while (stack.length > 0) {
             var vertex = stack.pop();
-            if (vertex !== undefined) {
+            if (vertex !== undefined && vertex <= this.numVertices) {
                 if (vertex === target) {
                     // Encontrou o destino, retornar o caminho.
                     var path = [];
@@ -64,7 +64,7 @@ var Graph = /** @class */ (function () {
         dist[source] = 0;
         while (Q.length > 0) {
             var p = Q.shift();
-            if (p !== undefined) {
+            if (p !== undefined && p <= this.numVertices) {
                 for (var _i = 0, _a = g.list[p]; _i < _a.length; _i++) {
                     var v = _a[_i];
                     if (!isVisited[v]) {

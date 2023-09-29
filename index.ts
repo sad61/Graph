@@ -41,18 +41,17 @@ function loadFrom(fileName: string): Graph {
 const gr: Graph = loadFrom(filePath);
 gr.print();
 
-// Vértices
-const s = 169;
-const t = 4;
+const source = 173;
+const target = 170;
 
-const bfsPath = gr.bfs(gr, s, t);
+const bfsPath = gr.bfs(gr, source, target);
 if (bfsPath.length === 0) {
   console.log("Não há caminho entre os vértices.");
 } else {
   console.log("Caminho BFS:", bfsPath.join(" -> "));
 }
 
-const dfsPath = gr.dfs(gr, s, t);
+const dfsPath = gr.dfs(gr, source, target);
 if (dfsPath.length === 0) {
   console.log("Não há caminho entre os vértices.");
 } else {

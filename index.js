@@ -36,17 +36,16 @@ function loadFrom(fileName) {
 }
 var gr = loadFrom(filePath);
 gr.print();
-// Vértices
-var s = 169;
-var t = 4;
-var bfsPath = gr.bfs(gr, s, t);
+var source = 173;
+var target = 170;
+var bfsPath = gr.bfs(gr, source, target);
 if (bfsPath.length === 0) {
     console.log("Não há caminho entre os vértices.");
 }
 else {
     console.log("Caminho BFS:", bfsPath.join(" -> "));
 }
-var dfsPath = gr.dfs(gr, s, t);
+var dfsPath = gr.dfs(gr, source, target);
 if (dfsPath.length === 0) {
     console.log("Não há caminho entre os vértices.");
 }

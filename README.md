@@ -2,6 +2,8 @@
 
 Certifique-se de que você possui o Node na versão 16.20.2 instalado em seu sistema. Você pode baixá-lo [Download Node.js 16.20.2](https://nodejs.org/download/release/v16.20.2/).
 
+Verifique se instalou o Node usando o comando `node -v` e também `npm -v`
+
 Após verificar se você possui o Node instalado, siga as etapas abaixo para configurar e executar o código:
 
 1. Abra o terminal e navegue até o diretório do projeto.
