@@ -1,0 +1,1 @@
+Para rodar código java você precisara dos mesmos requisitos do Readme.md (Node instalado)
